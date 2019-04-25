@@ -1,0 +1,28 @@
+{
+  "name": "nc_news_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "setup-dbs": "psql -f db/setup.sql",
+    "migrate-make": "knex migrate:make",
+    "migrate-latest": "knex migrate:latest",
+    "migrate-rollback": "knex migrate:rollback",
+    "test": "npm run seed && mocha ./spec/*.spec.js",
+    "seed": "knex seed:run",
+    "dev": "nodemon listen.js",
+    "start": "node listen.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-sorted": "^0.2.0",
+    "express": "^4.16.4",
+    "knex": "^0.16.5",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.18.11",
+    "pg": "^7.10.0",
+    "supertest": "^4.0.2"
+  }
+}

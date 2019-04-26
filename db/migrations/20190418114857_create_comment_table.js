@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
     commentTable.integer("votes").defaultTo(0);
     //defaults to 0
     commentTable.date("created_at");
-    commentTable.text("body");
+    commentTable.text("body").notNullable();
   });
 };
 /* */

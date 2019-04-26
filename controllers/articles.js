@@ -18,6 +18,11 @@ exports.getArticleByID = (req, res, next) => {
   const article_id = req.params.article_id;
   fetchArticleByID(article_id)
     .then(articles => {
+      const article = articles[0];
+
+      if (!article) {
+        return Promise.reject({ status: 404, msg: "No article with that ID" });
+      }
       res.status(200).send({ articles });
     })
     .catch(next);
@@ -46,10 +51,9 @@ exports.getCommentsByArticleID = (req, res, next) => {
 exports.postCommentsByArticleID = (req, res, next) => {
   const article_id = req.params.article_id;
   const comment = req.body;
+  console.log(comment);
   addCommentByArticleID(article_id, comment)
     .then(comments => {
-      console.log(comments);
-
       res.status(201).send({ comments });
     })
     .catch(next);

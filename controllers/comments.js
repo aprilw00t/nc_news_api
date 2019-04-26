@@ -12,7 +12,9 @@ exports.patchCommentByID = (req, res, next) => {
 
 exports.deleteCommentByID = (req, res, next) => {
   const comment_id = req.params.commentid;
-  removeCommentByID(comment_id).then(deletedComment => {
-    res.status(204).send({ deleted: deletedComment });
-  });
+  removeCommentByID(comment_id)
+    .then(deletedComment => {
+      res.status(204).send({ deleted: deletedComment });
+    })
+    .catch(next);
 };
